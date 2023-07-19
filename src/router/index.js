@@ -1,28 +1,33 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import HomeView from "../views/HomeView.vue";
-//import LoginView from "../views/LoginView.vue";
-//import SingUp from "../views/SingUp.vue";
+
+import LoginView from "../views/LoginView.vue";
+import SingUp from "../views/SingUp.vue";
+import UsuarioView from "../views/UsuarioView.vue";
+import ThePerfil from "../views/ThePerfil.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: HomeView,
-  },
-  {
-    path: "/login",
     name: "login",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/LoginView.vue"),
+    component: LoginView,
   },
   {
     path: "/singup",
     name: "singup",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/SingUp.vue"),
+    component: SingUp,
+  },
+  {
+    path: "/usuario",
+    name: "usuario",
+    component: UsuarioView,
+  },
+  {
+    path: "/perfil",
+    name: "perfil",
+    component: ThePerfil,
   },
 ];
 

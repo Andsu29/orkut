@@ -2,7 +2,16 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap";
+import axios from "axios";
+
+axios.defaults.baseURL =
+  "https://novo-login-d7651-default-rtdb.firebaseio.com/";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC7bL4zf3af24T9U83WUy97bEihJK5hmf4",
@@ -15,7 +24,14 @@ const firebaseConfig = {
   measurementId: "G-15M3NQS484",
 };
 
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+getAuth(app);
+
+Vue.use({
+  install(Vue) {
+    Vue.prototype.$http = axios;
+  },
+});
 
 Vue.config.productionTip = false;
 
